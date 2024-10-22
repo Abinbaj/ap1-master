@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.ap1.R
 import com.example.ap1.databinding.FragmentDetailsBinding
@@ -38,7 +39,12 @@ class DetailsFragment : Fragment() {
         // Set the image for the exercise based on the name
         val imageResId = getImageResIdForExercise(args.exerciseName)
         binding.detailsExerciseImage.setImageResource(imageResId)
+
+        binding.backButton.setOnClickListener {
+            findNavController().navigateUp() // This takes the user back to the previous screen
+        }
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -54,10 +60,11 @@ class DetailsFragment : Fragment() {
             "deadlifts" -> R.drawable.deadlift2
             "push-ups" -> R.drawable.pushup
             "bench press" -> R.drawable.benchpress2
-            "burpees" -> R.drawable.burpees2
+            "burpees" -> R.drawable.burpee2
             "mountain climbers" -> R.drawable.mountainclimbers2
             // Add more mappings here
             else -> R.drawable.deadlift // Default fallback image if no match is found
+
         }
     }
 }

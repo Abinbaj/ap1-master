@@ -52,7 +52,7 @@ class DashboardFragment : Fragment() {
                         difficulty = exercise.difficulty,
                         equipment = exercise.equipment
                     )
-                    findNavController().navigate(action) // Correct navigation
+                    findNavController().navigate(action)
                 }
                 binding.recyclerViewDashboard.adapter = adapter
             }

@@ -84,6 +84,18 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+    // MockK for unit tests
+    testImplementation ("io.mockk:mockk:1.12.0")
+
+    // MockK for Android instrumented tests
+    androidTestImplementation ("io.mockk:mockk-android:1.12.0")
+
+    // JUnit for unit testing
+    testImplementation ("junit:junit:4.13.2")
+
+    // For LiveData testing
+    testImplementation ("androidx.arch.core:core-testing:2.1.0")
+
 
 }
 

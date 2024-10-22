@@ -26,6 +26,7 @@
         android:textSize="25sp"
         android:textStyle="bold"
         android:textColor="@android:color/white"
+        android:fontFamily="@font/font1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/exerciseImage"
