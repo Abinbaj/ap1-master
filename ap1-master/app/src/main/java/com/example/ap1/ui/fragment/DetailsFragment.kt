@@ -5,19 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
+import com.example.ap1.R
 import com.example.ap1.databinding.FragmentDetailsBinding
-import com.example.ap1.viewmodels.DetailsFragment_ViewModel
-import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class DetailsFragment : Fragment() {
 
     private var _binding: FragmentDetailsBinding? = null
     private val binding get() = _binding!!
 
-    // ViewModel
-    private val detailsViewModel: DetailsFragment_ViewModel by viewModels()
+    // SafeArgs to retrieve passed data
+    private val args: DetailsFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,19 +28,36 @@ class DetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Observe the exercise details from the ViewModel and update the UI
-        detailsViewModel.exerciseDetails.observe(viewLifecycleOwner) { details ->
-            binding.tvExerciseName.text = details.exerciseName
-            binding.tvDescription.text = details.description
-            binding.tvMuscleGroup.text = details.muscleGroup
-            binding.tvCaloriesBurned.text = details.caloriesBurned.toString()
-            binding.tvDifficulty.text = details.difficulty
-            binding.tvEquipment.text = details.equipment
-        }
+        // Bind the exercise name and other details
+        binding.detailsExerciseName.text = args.exerciseName
+        binding.detailsDescription.text = args.description
+        binding.detailsDifficulty.text = "Difficulty: ${args.difficulty}"
+        binding.detailsEquipment.text = "Equipment: ${args.equipment}"
+        binding.detailsCaloriesBurned.text = "Calories Burned: ${args.caloriesBurned} per hour"
+
+        // Set the image for the exercise based on the name
+        val imageResId = getImageResIdForExercise(args.exerciseName)
+        binding.detailsExerciseImage.setImageResource(imageResId)
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    // This method correlates the exercise name to the corresponding image in the drawable folder
+    private fun getImageResIdForExercise(exerciseName: String): Int {
+        return when (exerciseName.toLowerCase()) {
+
+            "plank" -> R.drawable.plank2
+            "squats" -> R.drawable.squat
+            "deadlifts" -> R.drawable.deadlift2
+            "push-ups" -> R.drawable.pushup
+            "bench press" -> R.drawable.benchpress2
+            "burpees" -> R.drawable.burpees2
+            "mountain climbers" -> R.drawable.mountainclimbers2
+            // Add more mappings here
+            else -> R.drawable.deadlift // Default fallback image if no match is found
+        }
     }
 }
