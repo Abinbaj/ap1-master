@@ -6,7 +6,7 @@ data class Exercises(
     val difficulty: String,
     val equipment: String,
     val exerciseName: String,
-    val muscleGroup: String
+    val muscleGroup: String,
 )
 data class DashboardResponse(
     val entities: List<Exercises>,
