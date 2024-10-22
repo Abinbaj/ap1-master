@@ -5,8 +5,8 @@
     android:layout_height="wrap_content"
     android:padding="8dp">
 
-    <!-- Larger ImageView for Exercise Image -->
-    <ImageView
+    <!-- Larger ImageView with Rounded Corners for Exercise Image -->
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/exerciseImage"
         android:layout_width="0dp"
         android:layout_height="200dp"
@@ -14,7 +14,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHorizontal_bias="0.5" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:shapeAppearanceOverlay="@style/RoundedImageView" />
 
     <!-- TextView for Exercise Name below the image -->
     <TextView

@@ -29,8 +29,8 @@ class ExercisesAdapter(
         return when (exerciseName.toLowerCase()) {
             "deadlift" -> R.drawable.deadlift
             "plank" -> R.drawable.plank
-            "squats" -> R.drawable.squat
-            "push-ups" -> R.drawable.pushup
+            "squats" -> R.drawable.squat2
+            "push-ups" -> R.drawable.pushup2
             "bench press" -> R.drawable.benchpress
             "burpees" -> R.drawable.burpees
             "mountain climbers" ->R.drawable.mountainclimbers
@@ -49,3 +49,5 @@ class ExercisesAdapter(
         }
     }
 }
+
+
